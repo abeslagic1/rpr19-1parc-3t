@@ -12,7 +12,7 @@ import java.util.TreeSet;
 import static org.junit.jupiter.api.Assertions.*;
 
 class IgraTest {
-/*
+
     private static Igra igra = new Igra();
     private static List<Igrac> igraci = new ArrayList<>();
 
@@ -88,7 +88,7 @@ class IgraTest {
                 () -> assertTrue(igra.getIgraci().contains(igrac))
         );
     }
-
+/*
     @Test
     void dajIgracePoKriterijuTest() {
         List<Igrac> filtrirano1 = igra.dajIgracePoKriteriju(igrac -> igrac.getNadimak().contains("man"));
@@ -102,7 +102,7 @@ class IgraTest {
                 () -> assertEquals(1, filtrirano2.size()),
                 () -> assertTrue(filtrirano2.contains(igraci.get(1)))
         );
-    }
+    }*/
 
     @Test
     void dajHerojeTest() {
@@ -516,5 +516,5 @@ class IgraTest {
         );
     }
 
- */
+
 }
