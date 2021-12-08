@@ -1,23 +1,20 @@
 package ba.unsa.etf.rpr;
 
 public class Napad {
-    private String nazivNapada;
+    private String naziv;
     private double djelovanje;
 
-    public Napad(String nazivNapada, double djelovanje) {
-        this.nazivNapada = nazivNapada;
+    public Napad(String naziv, double djelovanje) {
+        this.naziv = naziv;
         this.djelovanje = djelovanje;
     }
 
-    public Napad() {
-    }
-
     public String getNazivNapada() {
-        return nazivNapada;
+        return naziv;
     }
 
-    public void setNazivNapada(String nazivNapada) {
-        this.nazivNapada = nazivNapada;
+    public void setNazivNapada(String naziv) {
+        this.naziv = naziv;
     }
 
     public double getDjelovanje() {
@@ -26,20 +23,5 @@ public class Napad {
 
     public void setDjelovanje(double djelovanje) {
         this.djelovanje = djelovanje;
-    }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Napad napad = (Napad) o;
-//
-//        return nazivNapada != null ? nazivNapada.equals(napad.nazivNapada) : napad.nazivNapada == null;
-//    }
-
-    @Override
-    public int hashCode() {
-        return nazivNapada != null ? nazivNapada.hashCode() : 0;
     }
 }

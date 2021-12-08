@@ -12,7 +12,7 @@ import java.util.TreeSet;
 import static org.junit.jupiter.api.Assertions.*;
 
 class IgraTest {
-
+/*
     private static Igra igra = new Igra();
     private static List<Igrac> igraci = new ArrayList<>();
 
@@ -515,4 +515,6 @@ class IgraTest {
                 () -> assertEquals(100, igra.getIgraci().get(5).getZivotniPoeni())
         );
     }
+
+ */
 }

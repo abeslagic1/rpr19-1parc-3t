@@ -17,35 +17,52 @@ public class Heroj extends Igrac{
     }
 
     @Override
+    public void napadni(String nazivNapada, Igrac meta) throws IlegalanNapad {
+
+        if(!getNapadi().contains(dajNapadIzNaziva(nazivNapada))) throw new IlegalanNapad(getNadimak() + " ne može izvršiti napad " + nazivNapada);
+
+        if(getZivotniPoeni() == 0) throw new IlegalanNapad("Ovaj igrač je vec završio borbu");
+
+        if(meta instanceof Heroj) throw new IlegalanNapad("Nije moguće izvršiti napad na prijatelja");
+
+        Napad napad = dajNapadIzNaziva(nazivNapada);
+        meta.primiNapad(napad);
+    }
+
+    @Override
+    public void primiNapad(Napad napad) {
+
+        if(getOdbrambeniPoeni() < napad.getDjelovanje()){
+            setZivotniPoeni(getZivotniPoeni() - napad.getDjelovanje() + getOdbrambeniPoeni());
+
+            if(getZivotniPoeni() < 0){
+                setZivotniPoeni(0);
+            }
+        }
+
+    }
+
+    @Override
     public void napadni(String nazivNapada, Igrac meta, double koeficijent) throws IlegalanNapad {
-        provjeriNapad(nazivNapada, meta);
+        if(!getNapadi().contains(dajNapadIzNaziva(nazivNapada))) throw new IlegalanNapad(getNadimak() + " ne može izvršiti napad " + nazivNapada);
+
+        if(getZivotniPoeni() == 0) throw new IlegalanNapad("Ovaj igrač je vec završio borbu");
+
+        if(meta instanceof Heroj) throw new IlegalanNapad("Nije moguće izvršiti napad na prijatelja");
+
         Napad napad = dajNapadIzNaziva(nazivNapada);
         meta.primiNapad(napad, koeficijent);
     }
 
     @Override
     public void primiNapad(Napad napad, double koeficijent) {
-        if(napad.getDjelovanje() * koeficijent > getOdbrambeniPoeni()){
-            setZivotniPoeni(getZivotniPoeni() - (napad.getDjelovanje() * koeficijent - getOdbrambeniPoeni()));
 
-            if(getZivotniPoeni() < 0){
+        if(getOdbrambeniPoeni() < napad.getDjelovanje()){
+            setZivotniPoeni(getZivotniPoeni() - napad.getDjelovanje() * koeficijent + getOdbrambeniPoeni());
+
+            if(getZivotniPoeni() < 0) {
                 setZivotniPoeni(0);
             }
         }
-    }
-
-    @Override
-    public void napadni(String nazivNapada, Igrac meta) throws IlegalanNapad {
-        napadni(nazivNapada, meta, 1);
-    }
-
-    @Override
-    public void primiNapad(Napad napad) {
-        primiNapad(napad, 1);
-    }
-
-    @Override
-    protected boolean izIstogTima(Igrac meta) {
-        return meta instanceof Heroj;
     }
 }
